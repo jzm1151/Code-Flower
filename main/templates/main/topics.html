@@ -1,52 +1,86 @@
 {% extends "main/_base.html" %}
 {% block body%}
-  <div id="container" style="margin-left: 3vw; margin-right: 3vw">
+  <div id="container" style="margin-left: 10vw; margin-right: 10vw">
     <div class="card black" style="border-radius: 5px">
-        <h3 class="white-text" style="padding-left: 1vw; display: inline-block; width: 90%">Select Topics</h3>
-        <div class="input-field col s12" style="display: inline-block; margin-left: auto; margin-right: 0px">
-            <select class="black-text">
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
-            </select>
-            <label>Filter lessons</label>
-        </div>
+        <h3 class="white-text" style="padding-left: 1vw; display: inline-block; width: 85%">Select Topics</h3>
     </div>
     <div class="card white">
         <ul class="collapsible" id="topics">
-            <li>
-                <div class="collapsible-header" id="topicList1"><h6><b>The basics</b></h6></div>
-                <div class="collapsible-body">
-                    <ul class="collapsible" id="lessonList1">
-                        <li>
-                            <div class="collapsible-header black white-text" id="lesson1"><p>Lesson 1</p></div>
-                            <div class="collapsible-body" style="width: 300px">
-                                <a href="{% url 'lesson_example' %}">Output to the console</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="collapsible" id="lessonList2">
-                        <li>
-                            <div class="collapsible-header black white-text" id="lesson1"><p>Lesson 2</p></div>
-                            <div class="collapsible-body">
-                                <p>Insert lesson content here</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-             </li>
         </ul>
     </div>
   </div>
     <script>
+        // Add to this list if you want to add more topics
+        // Topic ID corresponds to lesson array number
+        let topics = [
+            {
+                topicName: "The basics",
+                topic_id: 0
+            },
+            {
+                topicName: "Data types",
+                topic_id: 1
+            },
+        ]
+        let lessons = {
+            0: [
+                {
+                    lesson_num: 1,
+                    lessonName: "Outputting to console",
+                },
+                {
+                    lesson_num: 2,
+                    lessonName: "Inserting to console",
+                }
+            ],
+            1: [
+                {
+                    lesson_num: 1,
+                    lessonName: "Booleans",
+                },
+                {
+                    lesson_num: 2,
+                    lessonName: "Strings",
+                }
+            ]
+        }
 
-    $(document).ready(function(){
-        $('.collapsible').collapsible();
-    });
+        // Gets topic on load
+        window.onload = getTopics()
 
-    $(document).ready(function(){
-        $('select').formSelect();
-    });
+        // Function to get all topic in array
+        function getTopics() {
+            for(let i = 0; i < topics.length; i++) {
+                $(
+                    '<li id=' + "list" + i + '>' +
+                        '<div class="collapsible-header" id=' + "topicList" + i + '><h6><b>' + topics[i].topicName + '</b></h6></div>' +
+                        '<div class="collapsible-body" id=' + "lessonList" + i + '>' +
+                    '</li>'
+                ).appendTo("#topics")
+                getLessons(i);
+            }
+        }
+
+        // Generates lessons inside topic
+        function getLessons(topic_id) {
+            console.log(lessons[topic_id])
+            lessons[topic_id].forEach(i => {
+                $(
+                    '<ul class="collapsible" id=' + "lesson" + topic_id + '><li>' +
+                        '<div class="collapsible-header black white-text"><p>Lesson '+ i.lesson_num +'</p></div>' +
+                        '<div class="collapsible-body">' +
+                            // This will link all lessons to the first example because the dynamic lesson pages has not been worked on or discussed yet
+                            '<a href="{% url "lesson_example" %}">' + i.lessonName + '</a>' +
+                        '</div></li>' +
+                    '</ul>'
+                ).appendTo("#lessonList" + topic_id)
+            })
+        }
+
+        // Materialize call for collapsible boxes. No touch.
+        $(document).ready(function(){
+            $('.collapsible').collapsible();
+        });
     </script>
 
 {% endblock %}
