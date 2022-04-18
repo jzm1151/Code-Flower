@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CodeFlower</title>
 
-      <!-- Compiled and minified CSS -->
+    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
@@ -26,10 +26,10 @@
 
     body {
         background: url("https://wallpaperaccess.com/full/802645.jpg") no-repeat center center fixed;
-	    -webkit-background-size: cover;
-	    -moz-background-size: cover;
-	    -o-background-size: cover;
-	    background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
         display: flex;
         flex-direction: column;
         min-height: 100%;
@@ -40,6 +40,23 @@
     @keyframes fade-in {
         0% {
             opacity: 0;
+        }
+    }
+
+    .spin_flower {
+        margin-right: 0.5rem;
+        animation-name: spin;
+        animation-duration: 10000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
         }
     }
 
@@ -54,7 +71,11 @@
 <div class="navbar-fixed">
     <nav class="nav-wrapper black">
         <div class="container">
-            <a href="#" class="brand-logo">CodeFlower</a>
+            <a href="#" class="brand-logo">
+                <div style="display: flex; justify-content: center; align-items: center; width: fit-content; height: fit-content">
+                    <img class="spin_flower" style="width: 4rem"
+                         src="https://img.icons8.com/nolan/64/geometric-flowers.png"/><span>CodeFlower</span></div>
+            </a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links">
                 <i class="material-icons">menu</i>
             </a>
@@ -68,12 +89,12 @@
                     <li>Welcome {{ user.username }}</li>
                 {% endif %}
                 <li>{% if user.is_authenticated %}
-                        <a href="{% url 'account_logout' %}"  class="btn white black-text">Logout</a>
-                    {% else %}
-                        <!-- GitHub button starts here -->
-                        <a href="{% provider_login_url 'github' %}"  class="btn white black-text">Login</a>
-                        <!-- GitHub button ends here -->
-                    {% endif %}
+                    <a href="{% url 'account_logout' %}" class="btn white black-text">Logout</a>
+                {% else %}
+                    <!-- GitHub button starts here -->
+                    <a href="{% provider_login_url 'github' %}" class="btn white black-text">Login</a>
+                    <!-- GitHub button ends here -->
+                {% endif %}
                 </li>
             </ul>
         </div>
@@ -91,10 +112,10 @@
     {% endif %}
     <li class="collection-item">
         {% if user.is_authenticated %}
-            <a href="{% url 'account_logout' %}"  class="btn white black-text">Logout</a>
+            <a href="{% url 'account_logout' %}" class="btn white black-text">Logout</a>
         {% else %}
             <!-- GitHub button starts here -->
-            <a href="{% provider_login_url 'github' %}"  class="btn white black-text">Login</a>
+            <a href="{% provider_login_url 'github' %}" class="btn white black-text">Login</a>
             <!-- GitHub button ends here -->
         {% endif %}
     </li>
