@@ -19,7 +19,7 @@
         </div>
     {% endif %}
     <div class="container" style="margin-bottom: 2rem">
-        <a class="btn" href="{% url 'lesson_quizzes' lesson.id %}">quiz</a>
+        <a class="btn"style="background-color:darkorange;" href="{% url 'lesson_quizzes' lesson.id %}">quiz</a>
     </div>
     <div class="container white" id="comment-section" style="padding: 1rem; margin-bottom: 1rem;">
         <div class="comment-form-wrapper" style="width: 100%; height: fit-content;">
@@ -28,7 +28,7 @@
                 <input type="hidden" value="{{ lesson.id }}">
                 <textarea placeholder="Comment..." id="comment-body" style="width: 100%; height: 100%; outline: none"></textarea>
             </div>
-            <button id="submit-comment-form" class="btn-small" style="margin-left:2.5%; margin-top:2px; margin-bottom: .5rem;">Comment</button>
+            <button id="submit-comment-form" class="btn-small" style="margin-left:2.5%; margin-top:2px;background-color: #3498db; margin-bottom: .5rem;">Comment</button>
         </div>
         <div id="comments-wrapper" style="overflow: scroll; height: fit-content; max-height: 30rem; padding:1rem;">
             {% for comment in lesson.lessoncomment_set.all %}

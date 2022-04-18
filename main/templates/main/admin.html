@@ -33,23 +33,23 @@
                 <div class="added card">
                     <i class="large material-icons">book</i>
                     <p>Topics added</p>
-                    <button class="btn modal-trigger" id="added-topics" data-target="all-topics">View</button>
+                    <button class="btn modal-trigger" id="added-topics" data-target="all-topics" style="background-color: #3498db;">View</button>
                 </div>
                 <div class="added card">
                     <i class="large material-icons">format_list_bulleted</i>
                     <p>Lessons added</p>
-                    <button class="btn modal-trigger" id="added-lessons" data-target="all-lessons">View</button>
+                    <button class="btn modal-trigger" id="added-lessons" data-target="all-lessons" style="background-color: #3498db;">View</button>
                 </div>
                 <div class="added card">
                     <i class="large material-icons">code</i>
                     <p>Questions added</p>
-                    <button class="btn modal-trigger" id="added quizzes" data-target="all-quizzes">View</button>
+                    <button class="btn modal-trigger" id="added quizzes" data-target="all-quizzes" style="background-color: #3498db;">View</button>
                 </div>
             </div>
         </div>
         <div class="add-topics card">
             <h4 style="padding: 1rem">Add new topics here</h4>
-            <button data-target="add-topics" class="btn-floating large modal-trigger">
+            <button data-target="add-topics"  class="btn-floating large modal-trigger" style="background-color: #3498db;">
                 <i class="large material-icons">add</i>
             </button>
         </div>
@@ -59,7 +59,7 @@
                     <p style="padding: 1rem; display: inline-block">{{ topic.name }}</p>
                     <a href="{% url 'edit_topic' topic.id %}">
                         <button class="btn-floating" style="float:right">
-                            <i class="material-icons">edit</i>
+                            <i class="material-icons" style="background-color: #3498db;">edit</i>
                         </button>
                     </a>
                     <button class="pub btn-floating red" style="float:right">
@@ -83,7 +83,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn modal-close red">Cancel</button>
-            <button class="btn modal-close" onclick="addTopic()">Add</button>
+            <button class="btn modal-close" onclick="addTopic()" style="background-color: #3498db;">Add</button>
         </div>
     </div>
 

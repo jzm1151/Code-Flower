@@ -20,6 +20,14 @@
 {% load socialaccount %}
 
 <style>
+    button{
+        margin-left:2.5%;
+        background-color: #3498db;
+    }
+    button:hover{
+        background-color: lightblue;
+    }
+
     html {
         height: 100%;
     }
@@ -51,7 +59,7 @@
 
 
 <body>
-<div class="navbar-fixed">
+<div class="navbar-fixed" style="background-color: #ffc1cc">
     <nav class="nav-wrapper black">
         <div class="container">
             <a href="#" class="brand-logo">CodeFlower</a>
@@ -103,7 +111,7 @@
 {% block body %}
 {% endblock %}
 
-<footer class="page-footer black">
+<footer class="page-footer #ffc1cc">
     <div class="row container">
         <div class="col s6" id="about">
             <h5>Contact Us</h5>
