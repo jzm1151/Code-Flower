@@ -16,7 +16,7 @@ def topics(request):
     if not request.user.is_authenticated:
         return render(request, 'main/home.html', {'no_auth_message': True})
 
-    all_topics = Topic.objects.all()
+    all_topics = Topic.objects.order_by('id')
     context = {'topics': all_topics}
     return render(request, 'main/topics.html', context)
 
